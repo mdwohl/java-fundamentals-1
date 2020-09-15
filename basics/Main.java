@@ -1,4 +1,6 @@
-// import java.util.Random;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 
 public class Main{
   public static void main(String[] args) {
@@ -10,8 +12,11 @@ public class Main{
 
     int gerbilCount = 1;
     System.out.println("I own " + gerbilCount + " " + pluralize("gerbil", gerbilCount) + ".");
+    
+    int flipCount = 4;
+    System.out.println(flipNHeads(flipCount));
 
-    System.out.println(flipNHeads(5));
+    clock();
   }
 
   public static String pluralize(String word, int animalCount) {
@@ -26,9 +31,7 @@ public class Main{
   public static String flipNHeads (int howManyFlips) {
     int theNumber = 0;
     int totalCount = 0;
-    // for (int i = 0; i < 5; i++) {
-    //   System.out.println("random number is " + Math.random());  
-    // }
+
     while (theNumber != howManyFlips) { // w David Dicken, found that the Math.random is standard/built-in, no need to import.
       if (Math.random() < .5) {
         theNumber++;
@@ -39,5 +42,21 @@ public class Main{
       }
     }
     return "It took " + totalCount + " flips to have " + howManyFlips + " heads in a row.";
+  }
+
+  public static void clock() {
+    int number = 0;
+    LocalDateTime timeToCheck = LocalDateTime.now();
+    String time = timeToCheck.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+    String diffTime = timeToCheck.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+    while (number == 0) {
+      timeToCheck = LocalDateTime.now();
+      diffTime = timeToCheck.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+      if (!time.equals(diffTime)) {
+        time = timeToCheck.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.println(time);
+      }
+    }
   }
 }
