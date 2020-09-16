@@ -41,6 +41,38 @@ public class BasicLibraryTest {
     }
 
     @Test public void Averages() {
+        Roll roll = new Roll();
+        Averages thisAverage = new Averages();
+        double[] averageToFind = roll.diceRoll(10000);
+        double min = 0;
+        double max = 6;
+        double numberAverage = (max - min) / 2;
 
+        double averageToTest = thisAverage.averageFinder(averageToFind);
+        boolean correctAverage;
+
+        if (averageToTest > numberAverage - 1 && averageToTest < numberAverage + 1) {
+            correctAverage = true;
+        } else {
+            correctAverage = false;
+        }
+
+        System.out.println(numberAverage);
+        System.out.println(averageToTest);
+        assertTrue("it is within the average", correctAverage);
+    }
+
+    @Test public void LowestAverage() {
+        double[][] weeklyMonthTemperatures = {
+          {66.0, 64.0, 58.0, 65.0, 71.0, 57.0, 60.0},
+          {57.0, 65.0, 65.0, 70.0, 72.0, 65.0, 51.0},
+          {5.0, 4.0, 6.0, 3.0, 9.0, 7.0, 1.0},
+          {65.0, 56.0, 55.0, 52.0, 55.0, 62.0, 57.0}
+        };
+
+        LowestAverage lowlow = new LowestAverage();
+        double[] testlowAverage = {5.0, 4.0, 6.0, 3.0, 9.0, 7.0, 1.0};
+        lowlow.lowAverage(weeklyMonthTemperatures);
+        assertArrayEquals(testlowAverage, lowlow.lowAverage(weeklyMonthTemperatures), 0);
     }
 }
