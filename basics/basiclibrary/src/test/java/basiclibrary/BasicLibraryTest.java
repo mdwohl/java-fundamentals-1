@@ -37,7 +37,10 @@ public class BasicLibraryTest {
         double[] dupleRoller = roll.diceRoll(numberOfDupleChances);
         boolean testTrue = findTheDuples.duplicatePresent(dupleRoller);
 
-
         assertTrue(testTrue);
+    }
+
+    @Test public void Averages() {
+
     }
 }
