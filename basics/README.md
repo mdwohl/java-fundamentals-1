@@ -32,7 +32,7 @@
   finds if there are any duplicates within arg array (of doubles, in this case)
 
 ## LowestAverage
-  finds the lowest average of a provided array of arrays (of doubles). also uses Averages() ti find the average of each array.
+  returns the array with the lowest average of a provided array of arrays (of doubles). also uses Averages() to find the average of each array.
 
 ## Roll
   takes in a number, returns an array of random numbers - in this case 1 through 6. Could be made to be dynamic, but is not currently.
