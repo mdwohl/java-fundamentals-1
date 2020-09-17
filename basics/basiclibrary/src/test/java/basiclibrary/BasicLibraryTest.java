@@ -5,13 +5,13 @@ package basiclibrary;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class BasicLibraryTest {
-//    @Test public void testSomeLibraryMethod() {
-//        Library classUnderTest = new Library();
-//        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
-//    }
-    @Test public void rollSomeDice() {
+
+    @Test
+    public void rollSomeDice() {
         Roll roll = new Roll();
         int timesToRoll = 124;
         double[] finalRoll = roll.diceRoll(timesToRoll);
@@ -19,8 +19,8 @@ public class BasicLibraryTest {
 
         boolean diceNumber = false;
 
-        for(int i = 0; i < timesToRoll; i++) { // created w help from Claudio Bailon-Schubert
-            if (finalRoll[i] > 0.0d && finalRoll[i] < 7.0d) {
+        for (int i = 0; i < timesToRoll; i++) { // created w help from Claudio Bailon-Schubert
+            if (finalRoll[i] > 0 && finalRoll[i] < 7) {
                 diceNumber = true;
             } else {
                 diceNumber = false;
@@ -30,7 +30,8 @@ public class BasicLibraryTest {
         assertTrue("all the numbers are on a standard 1d6", diceNumber);
     }
 
-    @Test public void findDuplicates() {
+    @Test
+    public void findDuplicates() {
         DuplicateFinder findTheDuples = new DuplicateFinder();
         Roll roll = new Roll();
         int numberOfDupleChances = 20;
@@ -40,7 +41,8 @@ public class BasicLibraryTest {
         assertTrue(testTrue);
     }
 
-    @Test public void Averages() {
+    @Test
+    public void Averages() {
         Roll roll = new Roll();
         Averages thisAverage = new Averages();
         double[] averageToFind = roll.diceRoll(10000);
@@ -62,7 +64,8 @@ public class BasicLibraryTest {
         assertTrue("it is within the average", correctAverage);
     }
 
-    @Test public void LowestAverage() {
+    @Test
+    public void LowestAverage() {
         double[][] weeklyMonthTemperatures = {
           {66.0, 64.0, 58.0, 65.0, 71.0, 57.0, 60.0},
           {57.0, 65.0, 65.0, 70.0, 72.0, 65.0, 51.0},
@@ -74,5 +77,39 @@ public class BasicLibraryTest {
         double[] testlowAverage = {5.0, 4.0, 6.0, 3.0, 9.0, 7.0, 1.0};
         lowlow.lowAverage(weeklyMonthTemperatures);
         assertArrayEquals(testlowAverage, lowlow.lowAverage(weeklyMonthTemperatures), 0);
+    }
+
+    @Test public void missingTemp () {
+        Maps bananaWeather = new Maps();
+
+        int[][] weeklyMonthTemperatures = {
+          {66, 64, 58, 65, 71, 57, 60},
+          {57, 65, 65, 70, 72, 65, 51},
+          {55, 54, 60, 53, 59, 57, 61},
+          {65, 56, 55, 52, 55, 62, 57}
+        };
+        String bananaResult = bananaWeather.weatherReport(weeklyMonthTemperatures);
+
+        String testString = "High: 72\nLow: 51\nNever saw temperature: 63\nNever saw temperature: 67\nNever saw temperature: 68\nNever saw temperature: 69";
+        assertEquals(testString, bananaResult);
+    }
+
+    @Test public void electionTally () {
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        Maps voteCounter = new Maps();
+
+        String winner = "Bush received the most votes!";
+
+        assertEquals(winner, voteCounter.tally(votes));
     }
 }

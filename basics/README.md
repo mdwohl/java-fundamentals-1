@@ -36,3 +36,18 @@
 
 ## Roll
   takes in a number, returns an array of random numbers - in this case 1 through 6. Could be made to be dynamic, but is not currently.
+
+## Maps
+
+### HashSet low, high, and missing integers
+  takes in an array of arrays (integers), loops over them then:
+    - stores the unique integers into a hashset
+    - finds the lowest integer
+    - finds the highest integer
+    - finds the integers not represented between the lowest integer and highest integer
+
+### Tally
+  takes in a String List, then 
+  - puts the items being voted on into the key of a HashMap
+  - the count of its vote goes in as the value
+  - returns who the winner was (via a concatenated string)
