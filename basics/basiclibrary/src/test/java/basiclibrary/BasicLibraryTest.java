@@ -5,6 +5,8 @@ package basiclibrary;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class BasicLibraryTest {
 
@@ -17,7 +19,7 @@ public class BasicLibraryTest {
         boolean diceNumber = false;
 
         for(int i = 0; i < timesToRoll; i++) { // created w help from Claudio Bailon-Schubert
-            if (finalRoll[i] > 0.0d && finalRoll[i] < 7.0d) {
+            if (finalRoll[i] > 0 && finalRoll[i] < 7) {
                 diceNumber = true;
             } else {
                 diceNumber = false;
@@ -72,4 +74,34 @@ public class BasicLibraryTest {
         lowlow.lowAverage(weeklyMonthTemperatures);
         assertArrayEquals(testlowAverage, lowlow.lowAverage(weeklyMonthTemperatures), 0);
     }
+
+    @Test public void missingTemperatures() {
+        int[][] weeklyMonthTemperatures = {
+          {66, 64, 58, 65, 71, 57, 60},
+          {57, 65, 65, 70, 72, 65, 51},
+          {55, 54, 60, 53, 59, 57, 61},
+          {65, 56, 55, 52, 55, 62, 57}
+        };
+
+        Maps weatherCheck = new Maps();
+    }
+
+    @Test public void electionTally() {
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        Maps voteCounter = new Maps();
+
+        System.out.println(voteCounter.tally(votes));
+
+    }
+
 }
