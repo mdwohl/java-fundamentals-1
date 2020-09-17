@@ -7,13 +7,34 @@ import java.util.List;
 import java.util.Set;
 
 public class Maps {
-  public String weatherReport (int[][] weatherData) {
+  public String weatherReport(int[][] weatherData){
     HashSet<Integer> uniqueTemps = new HashSet<>();
-    uniqueTemps.add(weatherData[0][0]);
-    uniqueTemps.add(weatherData[0][1]);
-//    String weather = uniqueTemps.toString(0);
-    System.out.println(uniqueTemps);
-    return "yes";
+
+    for(int i = 0; i<weatherData.length;i++){
+      for(int j = 0 ; j< weatherData[i].length;j++){
+        uniqueTemps.add(weatherData[i][j]);
+      }
+    }
+    int lowTemp = 10000;
+    int highTemp = -100000;
+    for(Integer bananaTemp: uniqueTemps) {
+      if( bananaTemp < lowTemp ) {
+        lowTemp=bananaTemp;
+      }
+      if (bananaTemp > highTemp) {
+        highTemp = bananaTemp;
+      }
+      System.out.println(bananaTemp);
+    }
+
+    String returnString = "High: " + highTemp + "\nLow: " + lowTemp;
+
+    for (int k = lowTemp; k < highTemp; k++) {
+      if(!uniqueTemps.contains(k)) {
+        returnString = returnString + "\nNever saw temperature: " + k;
+      }
+    }
+    return returnString;
   }
 
   public String tally(List<String> plants) { // Jack Nelson and Marchael Acode unlocked this
