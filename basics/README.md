@@ -17,3 +17,22 @@
     java.time.format.DateTimeFormatterBuilder
   
   to do so.
+
++++++ 2020-09-15 || Dice, Duplicates, Averages, and Lowest Average || +++++
+
+# Methods
+
+## BasicLibraryTest
+  where all things - tests, in this case - run.
+
+## Averages
+  finds the average of a passed in array of numbers (double, in my case)
+
+## DuplicateFinder
+  finds if there are any duplicates within arg array (of doubles, in this case)
+
+## LowestAverage
+  returns the array with the lowest average of a provided array of arrays (of doubles). also uses Averages() to find the average of each array.
+
+## Roll
+  takes in a number, returns an array of random numbers - in this case 1 through 6. Could be made to be dynamic, but is not currently.
