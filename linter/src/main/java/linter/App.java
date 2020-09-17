@@ -23,7 +23,7 @@ public class App {
         while (file.hasNextLine()) {
             counter++;
             String currentString = file.nextLine();
-            if (currentString.isBlank()) {
+            if (currentString.isBlank()) { // https://stackoverflow.com/questions/14690169/check-if-line-is-empty-in-java
             } else {
 //              counter++;
                 char endChar = currentString.charAt(currentString.length() - 1);
