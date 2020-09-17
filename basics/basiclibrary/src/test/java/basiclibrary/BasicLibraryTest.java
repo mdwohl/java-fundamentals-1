@@ -100,8 +100,8 @@ public class BasicLibraryTest {
 
         Maps voteCounter = new Maps();
 
-        System.out.println(voteCounter.tally(votes));
+        String winner = "Bush received the most votes!";
 
+        assertEquals(winner, voteCounter.tally(votes));
     }
-
 }
