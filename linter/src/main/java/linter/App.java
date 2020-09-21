@@ -9,12 +9,16 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+    }
+
+    public String linterWorker(String testFile) {
+//        testFile = "src/main/resources/gates.js";
         Scanner file;
         try {
-            file = new Scanner(new File("src/main/resources/gates.js"));
+            file = new Scanner(new File(testFile)); // "src/main/resources/gates.js"
         } catch (FileNotFoundException e) {
             System.out.println("We couldn't find that file.");
-            return;
+            return "We couldn't find that file";
         }
 
         int counter = 0;
@@ -23,20 +27,15 @@ public class App {
         while (file.hasNextLine()) {
             counter++;
             String currentString = file.nextLine();
-            if (currentString.isBlank()) { // https://stackoverflow.com/questions/14690169/check-if-line-is-empty-in-java
-            } else {
+            if (!currentString.isBlank()) { // https://stackoverflow.com/questions/14690169/check-if-line-is-empty-in-java
 //              counter++;
                 char endChar = currentString.charAt(currentString.length() - 1);
-                if (endChar == ';' || endChar == '{' || endChar == '}' || currentString.contains("if") || currentString.contains("else")) {
-                } else {
+                if (!(endChar == ';' || endChar == '{' || endChar == '}' || currentString.contains("if") || currentString.contains("else"))) {
                     errorMessage += "Line " + counter + ": Missing semicolon.\n";
                 }
             }
         }
         System.out.println(errorMessage);
+        return errorMessage;
     }
-
-//    public String sayHi(){
-//        return "Hi!";
-//    }
 }
