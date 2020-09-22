@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class AppTest {
     @Test public void main() {
-        App classUnderTest = new App();
-//        assertNotNull("Hi!", classUnderTest.sayHi());
+        App linterTest = new App();
+        linterTest.linterWorker("src/main/resources/gates.js");
     }
 }
